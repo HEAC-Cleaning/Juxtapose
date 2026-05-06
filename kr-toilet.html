@@ -1,43 +1,51 @@
-<!-- republish -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>KR Toilet – Before & After</title>
+
+  <!-- Juxtapose CSS -->
   <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
   <style>
-    html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-#juxtapose-container {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* keeps it proportional */
-}
+    .juxtapose {
+      max-width: 100%;
+      height: 100%;
+    }
 
+    .juxtapose img {
+      object-fit: cover;
+    }
 
-    #juxtapose-container {
-  width: 100%;
-  height: 500px;
-}
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
-  <div id="juxtapose-container"></div>
+  <div class="wrapper">
+    <div id="kr-toilet-slider" class="juxtapose"></div>
+  </div>
 
-  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.js"></script>
+  <!-- Juxtapose JS -->
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
   <script>
-    new juxtapose.JXSlider('#juxtapose-container',
+    new juxtapose.JXSlider('#kr-toilet-slider',
       [
         {
-          src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/krtoiletbefore.jpg',
+          src: 'images/krtoilet-before.jpg',
           label: 'Before'
         },
         {
-          src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/krtoiletafter.jpg',
+          src: 'images/krtoilet-after.jpg',
           label: 'After'
         }
       ],
@@ -47,7 +55,9 @@
         showCredits: false,
         startingPosition: "50%",
         makeResponsive: true
-      });
+      }
+    );
   </script>
 </body>
 </html>
+
