@@ -1,0 +1,63 @@
+<!-- republish -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KC Shower – Before & After</title>
+
+  <!-- Juxtapose CSS -->
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .juxtapose {
+      max-width: 100%;
+      height: 100%;
+    }
+
+    .juxtapose img {
+      object-fit: cover;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="kc-shower-slider" class="juxtapose"></div>
+  </div>
+
+  <!-- Juxtapose JS -->
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+  <script>
+    new juxtapose.JXSlider('#kc-shower-slider',
+      [
+        {
+          src: 'kcshowerbefore.jpg',
+          label: 'Before'
+        },
+        {
+          src: 'kcshowerafter.jpg',
+          label: 'After'
+        }
+      ],
+      {
+        animate: true,
+        showLabels: true,
+        showCredits: false,
+        startingPosition: "50%",
+        makeResponsive: true
+      }
+    );
+  </script>
+</body>
+</html>
