@@ -1,0 +1,53 @@
+<!-- republish -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+  <style>
+    html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#juxtapose-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* keeps it proportional */
+}
+
+
+    #juxtapose-container {
+  width: 100%;
+  height: 500px;
+}
+  </style>
+</head>
+<body>
+  <div id="juxtapose-container"></div>
+
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.js"></script>
+  <script>
+    new juxtapose.JXSlider('#juxtapose-container',
+      [
+        {
+          src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/jablindsbefore.jpg',
+          label: 'Before'
+        },
+        {
+          src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/jablindsafter.jpg',
+          label: 'After'
+        }
+      ],
+      {
+        animate: true,
+        showLabels: true,
+        showCredits: false,
+        startingPosition: "50%",
+        makeResponsive: true
+      });
+  </script>
+</body>
+</html>
