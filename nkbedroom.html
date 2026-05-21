@@ -19,11 +19,10 @@
     /* Stable container for Wix */
     #juxtapose-container {
       width: 100%;
-      height: 600px; /* prevents iframe collapse */
+      height: 600px;
       max-width: 100%;
     }
 
-    /* Keeps both images aligned when dragging */
     .jx-slider img {
       object-fit: cover;
     }
@@ -36,15 +35,21 @@
   <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.js"></script>
 
   <script>
+    const beforeImg = new Image();
+    const afterImg = new Image();
+
+    beforeImg.src = "https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2before.jpeg";
+    afterImg.src = "https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2after.jpeg";
+
     function initSlider() {
       new juxtapose.JXSlider('#juxtapose-container',
         [
           {
-            src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2before.jpeg',
+            src: beforeImg.src,
             label: 'Before'
           },
           {
-            src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2after.jpeg',
+            src: afterImg.src,
             label: 'After'
           }
         ],
@@ -58,10 +63,20 @@
       );
     }
 
-    // Wait until both images are loaded before initializing
-    window.addEventListener('load', () => {
-      setTimeout(initSlider, 500); // ensures both images are ready
-    });
+    // Load both images first
+    let loaded = 0;
+    function checkLoaded() {
+      loaded++;
+      if (loaded === 2) initSlider();
+    }
+
+    beforeImg.onload = checkLoaded;
+    afterImg.onload = checkLoaded;
+
+    // Fallback: if GitHub is slow, still load after 1 second
+    setTimeout(() => {
+      if (loaded < 2) initSlider();
+    }, 1000);
   </script>
 </body>
 </html>
