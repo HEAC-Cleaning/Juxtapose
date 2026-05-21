@@ -1,53 +1,67 @@
 <!-- republish -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
   <style>
     html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-#juxtapose-container {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* keeps it proportional */
-}
-
-
+    /* Stable container for Wix */
     #juxtapose-container {
-  width: 100%;
-  height: 500px;
-}
+      width: 100%;
+      height: 600px; /* prevents iframe collapse */
+      max-width: 100%;
+    }
+
+    /* Keeps both images aligned when dragging */
+    .jx-slider img {
+      object-fit: cover;
+    }
   </style>
 </head>
+
 <body>
   <div id="juxtapose-container"></div>
 
   <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.js"></script>
+
   <script>
-    new juxtapose.JXSlider('#juxtapose-container',
-      [
+    function initSlider() {
+      new juxtapose.JXSlider('#juxtapose-container',
+        [
+          {
+            src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2before.jpeg',
+            label: 'Before'
+          },
+          {
+            src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2after.jpeg',
+            label: 'After'
+          }
+        ],
         {
-          src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2before.jpeg',
-          label: 'Before'
-        },
-        {
-          src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/nkbedroom2after.jpeg',
-          label: 'After'
+          animate: true,
+          showLabels: true,
+          showCredits: false,
+          startingPosition: "50%",
+          makeResponsive: true
         }
-      ],
-      {
-        animate: true,
-        showLabels: true,
-        showCredits: false,
-        startingPosition: "50%",
-        makeResponsive: true
-      });
+      );
+    }
+
+    // Wait until both images are loaded before initializing
+    window.addEventListener('load', () => {
+      setTimeout(initSlider, 500); // ensures both images are ready
+    });
   </script>
 </body>
 </html>
