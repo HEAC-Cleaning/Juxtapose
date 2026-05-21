@@ -16,13 +16,11 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    .juxtapose {
+    /* Stable container for Wix */
+    #kr-toilet-slider {
+      width: 100%;
+      height: 600px; /* prevents iframe collapse */
       max-width: 100%;
-      height: 100%;
-    }
-
-    .juxtapose img {
-      object-fit: cover;
     }
 
     .wrapper {
@@ -31,34 +29,38 @@
     }
   </style>
 </head>
+
 <body>
   <div class="wrapper">
-    <div id="kr-toilet-slider" class="juxtapose"></div>
+    <div id="kr-toilet-slider"></div>
   </div>
 
   <!-- Juxtapose JS -->
   <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+
   <script>
-    new juxtapose.JXSlider('#kr-toilet-slider',
-      [
+    // Delay ensures Wix iframe + images load first
+    setTimeout(() => {
+      new juxtapose.JXSlider('#kr-toilet-slider',
+        [
+          {
+            src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/krtoiletbefore.jpg',
+            label: 'Before'
+          },
+          {
+            src: 'https://raw.githubusercontent.com/HEAC-Cleaning/Juxtapose/main/krtoiletafter.jpg',
+            label: 'After'
+          }
+        ],
         {
-          src: 'krtoiletbefore.jpg',
-          label: 'Before'
-        },
-        {
-          src: 'krtoiletafter.jpg',
-          label: 'After'
+          animate: true,
+          showLabels: true,
+          showCredits: false,
+          startingPosition: "50%",
+          makeResponsive: true
         }
-      ],
-      {
-        animate: true,
-        showLabels: true,
-        showCredits: false,
-        startingPosition: "50%",
-        makeResponsive: true
-      }
-    );
+      );
+    }, 300);
   </script>
 </body>
 </html>
-
